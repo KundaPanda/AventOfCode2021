@@ -27,8 +27,6 @@ def load_sequence():
 def part1():
     sequence, mappings = load_sequence()
     for _ in range(10):
-        if _ == 1:
-            pprint(Counter([''.join(pair) for pair in zip(sequence, sequence[1:])]))
         sequence = step(sequence, mappings)
     counter = Counter(sequence)
     print(counter.most_common()[0][1] - counter.most_common()[-1][1])
@@ -41,8 +39,6 @@ def part2():
         part = ''.join([a, b])
         sequence_map[part] += 1
     for _ in range(40):
-        if _ == 1:
-            pprint(Counter(sequence_map))
         new_map = defaultdict(int)
         for pair in sequence_map.keys():
             if (value := mappings.get(pair)) is not None:
